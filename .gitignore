@@ -1,0 +1,21 @@
+# dependencies
+node_modules
+
+# IDE - VSCode
+.vscode/*
+
+.idea
+.tmp
+.temp
+.sass-cache
+<%= appPath %>/bower_components
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
+
+
+
