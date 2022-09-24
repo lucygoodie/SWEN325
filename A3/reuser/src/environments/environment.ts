@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'todo.com', // fixme should be a legit url
+  baseUrl: 'https://swen325-a3-c05ea-default-rtdb.firebaseio.com',
   apiKey: '9999' // fixme should be a legit api
 };
 

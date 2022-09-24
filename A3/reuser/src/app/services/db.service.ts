@@ -13,4 +13,15 @@ export class DbService {
   // getRestaurantMenu(restaurantId: number): Observable<any> {
   //   return this.http.get(`${environment.baseUrl}/movie/popular?apikey=${environment}`); // fixme design a real api
   // }
+
+  getRestaurantMenu(restaurantId: number): Observable<any> {
+    // console.log(`${environment.baseUrl}/test`);
+    return this.http.get(`${environment.baseUrl}/test.json`);
+  }
+
+  getMenuItem(restaurantId: number): Observable<any> {
+    // console.log(`${environment.baseUrl}/test`);
+    return this.http.get(`${environment.baseUrl}/test.json`);
+  }
+
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-item',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemPage implements OnInit {
 
-  constructor() { }
+  item_id;
+  item_details;
+
+  constructor(private route: ActivatedRoute, private dbService: DbService) { }
 
   ngOnInit() {
+    this.item_id = this.route.snapshot.paramMap.get('id');
+    this.dbService.getMenuItem(this.item_id).subscribe(res => {
+        for (var key in res) {
+          var value = res[key];
+        }
+    });
   }
 
 }

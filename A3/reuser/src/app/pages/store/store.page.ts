@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -8,12 +10,33 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class StorePage implements OnInit {
 
-  constructor(private dbService: DbService) { }
+  store_id;
+  menu = [];
+
+  constructor(private route: ActivatedRoute, private dbService: DbService, private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
-    // this.dbService.getRestaurantMenu(99).subscribe(res => {
-    //   console.log(res);
-    // }); // fixme should be a legit id
+    this.store_id = this.route.snapshot.paramMap.get('id');
+    this.load_menu();
+  }
+
+  async load_menu() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      spinner: 'bubbles',
+    });
+
+    await loading.present();
+
+    this.dbService.getRestaurantMenu(this.store_id).subscribe(res => {
+      loading.dismiss();
+        for (var key in res) {
+          var value = res[key];
+          this.menu.push(value);
+        }
+        console.log(this.menu);
+    }); 
+
   }
 
 }

@@ -39,14 +39,6 @@ const routes: Routes = [
     path: 'unsuccessful-scan',
     loadChildren: () => import('./pages/unsuccessful-scan/unsuccessful-scan.module').then( m => m.UnsuccessfulScanPageModule)
   },
-  // {
-  //   path: 'db',
-  //   loadChildren: () => import('./services/db/db.module').then( m => m.DbPageModule)
-  // },
-  // {
-  //   path: 'nfc',
-  //   loadChildren: () => import('./services/nfc/nfc.module').then( m => m.NfcPageModule)
-  // },
 ];
 
 @NgModule({
