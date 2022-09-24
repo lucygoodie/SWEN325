@@ -10,7 +10,7 @@ export class DbService {
 
   constructor(private http: HttpClient) {}
 
-  getRestaurantMenu(restaurantId: number): Observable<any> {
-    return this.http.get(`${environment.baseUrl}/movie/popular?apikey=${environment}`); // fixme design a real api
-  }
+  // getRestaurantMenu(restaurantId: number): Observable<any> {
+  //   return this.http.get(`${environment.baseUrl}/movie/popular?apikey=${environment}`); // fixme design a real api
+  // }
 }

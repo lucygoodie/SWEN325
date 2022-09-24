@@ -12,8 +12,4 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  some_func() {
-    console.log('here 1');
-  }
-
 }

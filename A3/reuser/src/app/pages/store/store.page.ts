@@ -11,9 +11,9 @@ export class StorePage implements OnInit {
   constructor(private dbService: DbService) { }
 
   ngOnInit() {
-    this.dbService.getRestaurantMenu(99).subscribe(res => {
-      console.log(res);
-    }); // fixme should be a legit id
+    // this.dbService.getRestaurantMenu(99).subscribe(res => {
+    //   console.log(res);
+    // }); // fixme should be a legit id
   }
 
 }
