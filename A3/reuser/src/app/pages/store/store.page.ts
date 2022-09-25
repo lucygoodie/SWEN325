@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
@@ -13,7 +13,7 @@ export class StorePage implements OnInit {
   store_id;
   menu = [];
 
-  constructor(private route: ActivatedRoute, private dbService: DbService, private loadingCtrl: LoadingController) { }
+  constructor(private route: ActivatedRoute, private dbService: DbService, private loadingCtrl: LoadingController,  private router: Router) { }
 
   ngOnInit() {
     this.store_id = this.route.snapshot.paramMap.get('id');
@@ -29,14 +29,18 @@ export class StorePage implements OnInit {
     await loading.present();
 
     this.dbService.getRestaurantMenu(this.store_id).subscribe(res => {
-      loading.dismiss();
-        for (var key in res) {
+      let i: number = 1;
+      for (var key in res) {
           var value = res[key];
+          value["id"] = i;
           this.menu.push(value);
+          i++;
         }
-        console.log(this.menu);
+        loading.dismiss();
     }); 
-
   }
-
+  
+  openItem(item) {
+    this.router.navigate(['/item/'+item.id, {"title": item.title, "price": item.price, "options": item.options} ] ); // fixme options has to in string format
+  }
 }

@@ -12,15 +12,17 @@ export class ItemPage implements OnInit {
   item_id;
   item_details;
 
-  constructor(private route: ActivatedRoute, private dbService: DbService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.item_id = this.route.snapshot.paramMap.get('id');
-    this.dbService.getMenuItem(this.item_id).subscribe(res => {
-        for (var key in res) {
-          var value = res[key];
-        }
-    });
+    let title = this.route.snapshot.paramMap.get('title');
+    console.log(title);
+
+    let price = this.route.snapshot.paramMap.get('price');
+    console.log(price);
+
+    let options = this.route.snapshot.paramMap.get('options');
+    console.log(options);
   }
 
 }
