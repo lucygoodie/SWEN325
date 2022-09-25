@@ -29,18 +29,16 @@ export class StorePage implements OnInit {
     await loading.present();
 
     this.dbService.getRestaurantMenu(this.store_id).subscribe(res => {
-      let i: number = 1;
       for (var key in res) {
           var value = res[key];
-          value["id"] = i;
+          value['key'] = key;
           this.menu.push(value);
-          i++;
         }
         loading.dismiss();
     }); 
   }
   
   openItem(item) {
-    this.router.navigate(['/item/'+item.id, {"title": item.title, "price": item.price, "options": item.options} ] ); // fixme options has to in string format
+    this.router.navigate(['/item/'+item.id, {"key": item.key}]);
   }
 }

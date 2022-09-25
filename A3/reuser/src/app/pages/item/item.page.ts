@@ -10,19 +10,13 @@ import { DbService } from 'src/app/services/db.service';
 export class ItemPage implements OnInit {
 
   item_id;
-  item_details;
+  item_key;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let title = this.route.snapshot.paramMap.get('title');
-    console.log(title);
-
-    let price = this.route.snapshot.paramMap.get('price');
-    console.log(price);
-
-    let options = this.route.snapshot.paramMap.get('options');
-    console.log(options);
+    this.item_id = this.route.snapshot.paramMap.get('id');
+    this.item_key = this.route.snapshot.paramMap.get('key');
   }
 
 }
