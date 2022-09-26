@@ -6,9 +6,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-item button *ngFor="let item of menu" (click)="openItem(item)">
+    <ion-item button *ngFor="let item of menu" (click)="openItemModal(item)"> 
         <ion-label>{{item.title}}</ion-label>
         <ion-label>{{'$' + item.price}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-button *ngIf="showOrderOption()" (click)="order()">
+   {{'Order ' + cart.length}}
+  </ion-button>
 </ion-content>

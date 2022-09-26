@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController, NavParams } from '@ionic/angular';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,14 +10,28 @@ import { DbService } from 'src/app/services/db.service';
 })
 export class ItemPage implements OnInit {
 
-  item_id;
-  item_key;
+  title;
+  price;
+  options_list = [];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private navParams: NavParams, public modalController: ModalController) {}
 
   ngOnInit() {
-    this.item_id = this.route.snapshot.paramMap.get('id');
-    this.item_key = this.route.snapshot.paramMap.get('key');
+    let data = this.navParams.get('options')
+    for (var key in data) {
+      var value = data[key];
+      this.options_list.push(value);
+    }
   }
 
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
+  addToOrder() {
+    console.log(this.title);
+    this.dismiss();
+  }
 }
