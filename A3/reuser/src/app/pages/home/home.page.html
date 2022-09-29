@@ -1,33 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Choose...</ion-card-subtitle>
-      <ion-card-title>Type of user</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Choose which user you are:
-    </ion-card-content>
+
+<ion-content [fullscreen]="true" color="tertiary" class="content">
+
+  <ion-card class="filler">
+    <div></div>
   </ion-card>
 
-  <ion-card [routerLink]="['/enter-store']" button="true">
-    <ion-card-header>
-      <ion-card-title>Customer</ion-card-title>
-    </ion-card-header>
+  <ion-card class="mast">
+    <ion-text class="mast-text">ReUser</ion-text>
+    <ion-text class="mast-subtitle">Be more sustainable below!</ion-text>
   </ion-card>
 
-  <ion-card [routerLink]="['/read-order']" button="true">
-    <ion-card-header>
-      <ion-card-title>Server</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <ion-card class="customer" [routerLink]="['/enter-store']" button="true" >
+          <ion-card-header class="header">
+            <ion-card-title class="title">MAKE ORDER</ion-card-title>
+          </ion-card-header>
+       </ion-card>  
+
+      </ion-col>
+      <ion-col>
+
+        <ion-card  class="server" [routerLink]="['/read-order']" button="true">
+          <ion-card-header class="header">
+            <ion-card-title class="title">READ ORDER</ion-card-title>
+          </ion-card-header>
+        </ion-card>  
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    
+
+    
+
 
 </ion-content>

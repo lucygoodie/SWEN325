@@ -12,13 +12,11 @@ export class NfcService {
   constructor(private nfc: NFC, private ndef: Ndef) {}
 
   async readNFC() {
-    // Read NFC Tag - iOS
-    // On iOS, NFC reader session takes control from your app while scanning tags then returns a tag
     try {
       let tag = await this.nfc.scanNdef();
       let payload = tag.ndefMessage[0].payload;
       let message = this.nfc.bytesToString(payload);
-      message = message.replace(/\D/g,'');
+      message = message.substring(3);
       return message;
       
     } catch (err) {
@@ -26,31 +24,13 @@ export class NfcService {
     }
   }
 
-  // write(nfcEvent) {
-  //   var record = this.ndef.mimeMediaRecord('text/pg', this.payload);
-  //   this.nfc.write([record]); 
-  // }
-
   async writeNFC(payload) {
-
     try {
       let tag = await this.nfc.scanNdef({ keepSessionOpen: true});
-
-      var message = [
-          this.ndef.textRecord(payload)
-      ];
-
-      this.nfc.write(
-          message
-      );
-
-  } catch (err) {
+      this.nfc.write([this.ndef.textRecord(payload)]);
+      return true;
+    } catch (err) {
       console.log(err);
-  }
-
-    // this.payload = payload;
-    // this.nfc.addTagDiscoveredListener(this.write, (()=>{
-    //   alert('Failed to register NFC Listener');
-    // }));
+    }
   }
 }

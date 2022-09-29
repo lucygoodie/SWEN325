@@ -1,13 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>order</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        Close
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card (click)="write()" button="true">
-    <ion-card-header>
-      <ion-card-title>Scan restaurant tag</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-</ion-content>
+
+<ion-card>
+  <ion-card-header class="header">
+    <ion-card-title class="title">Order</ion-card-title>
+  </ion-card-header>
+  <ion-card-content class="text">Customers order</ion-card-content>
+</ion-card>  
+
+<ion-card>
+  <ion-card-header class="header">
+    <ion-card-title class="title">Order</ion-card-title>
+  </ion-card-header>
+  <ion-card-content class="text">{{order}}</ion-card-content>
+</ion-card>  

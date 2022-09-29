@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NfcService } from 'src/app/services/nfc.service';
+import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-order',
@@ -9,24 +8,24 @@ import { NfcService } from 'src/app/services/nfc.service';
 })
 export class OrderPage implements OnInit {
 
-  data: any;
- 
-  constructor(private route: ActivatedRoute, private nfcService: NfcService, private router: Router) {}
+  order;
+  title;
+
+  constructor(private navParams: NavParams, public modalController: ModalController) {}
 
   ngOnInit() {
-
-    this.route.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.data = JSON.parse(params.special);
-      }
-    });
-
-
-    console.log(this.data);
+    console.log(this.title);
+    // this.data=data;
+    // for (var key in data) {
+    //   var value = data[key];
+    //   this.order.push(value);
+    // }
   }
 
-  write() {
-    this.nfcService.writeNFC(this.data[0]);
+  dismiss() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }

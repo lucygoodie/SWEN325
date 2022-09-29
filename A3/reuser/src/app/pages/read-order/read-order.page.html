@@ -1,14 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>read-order</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" color="tertiary" class="content">
 
   <ion-card (click)="scan()" button="true">
     <ion-card-header>
-      <ion-card-title>Scan restaurant tag</ion-card-title>
+      <ion-card-title>Scan order tag</ion-card-title>
     </ion-card-header>
   </ion-card>
 

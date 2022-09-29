@@ -13,6 +13,7 @@ export class ItemPage implements OnInit {
   title;
   price;
   options_list = [];
+  change = {};
 
   constructor(private navParams: NavParams, public modalController: ModalController) {}
 
@@ -24,14 +25,23 @@ export class ItemPage implements OnInit {
     }
   }
 
+  onChange(option) {
+    this.change = {
+      "title": option.title,
+      "cost": option.cost,
+    };
+  }
+
   dismiss() {
-    this.modalController.dismiss({
-      'dismissed': true
-    });
+    this.modalController.dismiss();
   }
 
   addToOrder() {
-    console.log(this.title);
-    this.dismiss();
+    let item = {
+      "title": this.title,
+      "price": this.price,
+      "change": this.change,
+    };
+    this.modalController.dismiss(item);
   }
 }

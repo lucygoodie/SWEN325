@@ -5,7 +5,6 @@ import { DbService } from 'src/app/services/db.service';
 import { ItemPage } from '../item/item.page';
 
 
-
 @Component({
   selector: 'app-store',
   templateUrl: './store.page.html',
@@ -15,7 +14,7 @@ export class StorePage implements OnInit {
 
   store_id;
   menu = [];
-  cart = ['1'];
+  to_order;
 
   constructor(
     private route: ActivatedRoute, 
@@ -51,20 +50,25 @@ export class StorePage implements OnInit {
         component: ItemPage,
         componentProps: item,
     });
-    return modal.present();
+    modal.onDidDismiss().then(
+      (data) => {
+        this.to_order = data['data'];
+      });
+    return await modal.present();
   }
 
   showOrderOption() {
-    return this.cart.length > 0;
+    return this.to_order !== undefined;
   }
 
   order() {
+    console.log(JSON.stringify(this.to_order));
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        special: JSON.stringify(this.cart)
+        special: JSON.stringify(this.to_order)
       }
     };
 
-    this.router.navigate(['/order'], navigationExtras); // fixme has to in string format...
+    this.router.navigate(['/write-order'], navigationExtras); 
   }
 }

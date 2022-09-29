@@ -1,0 +1,50 @@
+.filler {
+    height: 15%;
+    background-color: transparent;
+    box-shadow: none !important;
+
+}
+
+.customer {
+    margin: 0%;
+    margin-left: 12%;
+    margin-right: 3%;
+    background-color: rgb(229, 210, 176);
+    box-shadow: none !important;
+}
+.server {
+    margin: 0%;
+    margin-right: 12%;
+    margin-left: 3%;
+    background-color: rgb(229, 210, 176);
+    box-shadow: none !important;
+}
+
+.title {
+    text-align: center !important;
+    font-weight: 700;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.mast {
+    box-shadow: none !important;
+    --background: url(../../../assets/reuser.png) 0 0/80% 100% no-repeat;
+    height: 20%;
+    margin-bottom: 1%;
+}
+
+.mast-text {
+    font-size: 5.5rem;
+    font-weight: 500;
+    color: rgb(255, 255, 254);
+    bottom: 1rem;
+    right: 0.3rem;
+    position: absolute;
+}
+
+.mast-subtitle {
+    bottom: 0.8rem;
+    right: 1rem;
+    position: absolute;
+}
