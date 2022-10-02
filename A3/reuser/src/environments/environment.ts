@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   baseUrl: 'https://swen325-a3-c05ea-default-rtdb.firebaseio.com',
-  apiKey: '9999' // fixme should be a legit api
 };
 
 /*
