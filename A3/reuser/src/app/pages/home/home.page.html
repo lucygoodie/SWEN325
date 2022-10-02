@@ -10,34 +10,22 @@
     <ion-text class="mast-text">ReUser</ion-text>
     <ion-text class="mast-subtitle">Be more sustainable below!</ion-text>
   </ion-card>
-
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-
-        <ion-card class="customer" [routerLink]="['/enter-store']" button="true" >
-          <ion-card-header class="header">
-            <ion-card-title class="title">MAKE ORDER</ion-card-title>
-          </ion-card-header>
-       </ion-card>  
-
-      </ion-col>
-      <ion-col>
-
-        <ion-card  class="server" [routerLink]="['/read-order']" button="true">
-          <ion-card-header class="header">
-            <ion-card-title class="title">READ ORDER</ion-card-title>
-          </ion-card-header>
-        </ion-card>  
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
     
+<ion-card class="selection">
+    <ion-segment class="select-type" [(ngModel)]="type" value="/enter-store">
+    <ion-segment-button value="/enter-store">
+      <ion-label>Make Order</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="/read-order">
+      <ion-label>Read Order</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-card>
 
-    
-
+      <ion-card class="button" (click)="navigate()" button="true" >
+        <ion-card-header>
+          <ion-card-title class="title">Let's go!</ion-card-title>
+        </ion-card-header>
+     </ion-card>  
 
 </ion-content>

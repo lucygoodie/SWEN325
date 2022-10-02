@@ -1,13 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>write-order</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="home()">
+        Close
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card (click)="write()" button="true">
-    <ion-card-header>
-      <ion-card-title>Write order to container</ion-card-title>
-    </ion-card-header>
+<ion-content [fullscreen]="true" color="tertiary" class="content">
+
+  <ion-card>
+
+    <ion-grid class="grid">
+      <ion-row class="row">
+        <ion-col size="2">
+        <ion-icon name="cart-outline"></ion-icon>
+        </ion-col>
+        <ion-col size="">
+          <ion-card-content class="label">{{item.title}}</ion-card-content>
+        </ion-col>
+        <ion-col size="3">
+          <ion-card-content class="label">${{price}}</ion-card-content>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="changes()" class="subtitle">
+        <ion-label>w/ {{item.change.title}}</ion-label>
+      </ion-row>
+    </ion-grid>
   </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-label position="stacked">Name for order *</ion-label>
+      <ion-input placeholder="eg. John Smith" [(ngModel)]="name" autocapitalize="true"></ion-input>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-img src="../../../assets/takeawaycup.png" class="image"></ion-img>
+
+  <ion-button (click)="write()" [disabled]="disableButton()">Write order to container</ion-button>
+
 </ion-content>
+

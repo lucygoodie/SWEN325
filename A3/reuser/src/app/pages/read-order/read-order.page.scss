@@ -1,0 +1,32 @@
+.content {
+    justify-content: center;
+    margin: auto;
+}
+
+.filler {
+    height: 10%;
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+.image {
+    height: 55%;
+    margin: 7.5%;
+    margin-top: 20%;
+}
+
+.button {
+    margin: auto;
+    width: 80%;
+    background-color: #c3dab2;
+    position: fixed;
+    bottom: 10%;
+    left: 10%;
+}
+
+.title {
+    text-align: center !important;
+    font-weight: 700;
+    color: white;
+    font-size: 1.2rem;
+}

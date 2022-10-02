@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>order</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">
         Close
@@ -9,17 +8,30 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true" color="tertiary" class="content">
 
-<ion-card>
-  <ion-card-header class="header">
-    <ion-card-title class="title">Order</ion-card-title>
-  </ion-card-header>
-  <ion-card-content class="text">Customers order</ion-card-content>
-</ion-card>  
+  <ion-card>
+    <ion-card-header class="header">
+      <ion-card-title class="title">Order</ion-card-title>
+    </ion-card-header>
 
-<ion-card>
-  <ion-card-header class="header">
-    <ion-card-title class="title">Order</ion-card-title>
-  </ion-card-header>
-  <ion-card-content class="text">{{order}}</ion-card-content>
-</ion-card>  
+    <ion-grid>
+      <ion-row class="row">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-card-content class="label">{{name}}</ion-card-content>
+      </ion-row>
+      <ion-row class="row">
+        <ion-icon name="cafe-outline"></ion-icon>
+          <ion-card-content class="label">{{title}}</ion-card-content>
+      </ion-row>
+      <ion-row>
+        <ion-card-content *ngIf="changes()" class="subtitle">+ {{change}}</ion-card-content>
+      </ion-row>
+      <ion-row class="row">
+        <ion-icon name="card-outline"></ion-icon>
+          <ion-card-content class="label">${{total_price}}</ion-card-content>
+      </ion-row>
+    </ion-grid>
+  </ion-card>  
+
+</ion-content>

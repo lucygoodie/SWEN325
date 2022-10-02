@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>item</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">
         Close
@@ -9,30 +8,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" color="tertiary" class="content">
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>{{'$' + price}}</ion-card-title>
-      <ion-card-title>{{title}}</ion-card-title>
-    </ion-card-header>
+
+    <ion-grid class="grid">
+      <ion-row class="row">
+        <ion-col size="2">
+        <ion-icon name="cart-outline"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-card-content class="label">{{title}}</ion-card-content>
+        </ion-col>
+        <ion-col size="5">
+          <ion-card-content class="label">${{price}}</ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+      <ion-card-content *ngIf="changes()">
+
+        <ion-item  *ngFor="let option of options_list">
+          <ion-checkbox slot="start" (click)="onChange(option)">
+          </ion-checkbox>
+            <ion-label>{{option.title}}</ion-label>
+            <ion-label>{{'$' + option.cost}}</ion-label>
+        </ion-item>
+      </ion-card-content>
+
+
   </ion-card>
 
-  <ion-list>
-
-    <ion-list-header>
-      <ion-label>Additions</ion-label>
-    </ion-list-header>
-    <ion-item  *ngFor="let option of options_list">
-      <ion-checkbox slot="start" (click)="onChange(option)">
-      </ion-checkbox>
-        <ion-label>{{option.title}}</ion-label>
-        <ion-label>{{'$' + option.cost}}</ion-label>
-    </ion-item>
-
-  </ion-list>
-
-  <ion-button (click)="addToOrder()">
-    Add to Order
+  <ion-button (click)="order()">
+    Order this!
   </ion-button>
 
 </ion-content>
+
+
+

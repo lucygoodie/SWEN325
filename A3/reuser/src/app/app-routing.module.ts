@@ -35,10 +35,6 @@ const routes: Routes = [
     path: 'order',
     loadChildren: () => import('./pages/order/order.module').then( m => m.OrderPageModule)
   },
-  {
-    path: 'unsuccessful-scan',
-    loadChildren: () => import('./pages/unsuccessful-scan/unsuccessful-scan.module').then( m => m.UnsuccessfulScanPageModule)
-  },
 ];
 
 @NgModule({

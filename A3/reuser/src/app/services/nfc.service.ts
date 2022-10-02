@@ -18,7 +18,6 @@ export class NfcService {
       let message = this.nfc.bytesToString(payload);
       message = message.substring(3);
       return message;
-      
     } catch (err) {
       console.log('Error reading tag', err);
     }
@@ -31,6 +30,7 @@ export class NfcService {
       return true;
     } catch (err) {
       console.log(err);
+      return false;
     }
   }
 }

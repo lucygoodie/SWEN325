@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
-import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-item',
@@ -15,7 +14,7 @@ export class ItemPage implements OnInit {
   options_list = [];
   change = {};
 
-  constructor(private navParams: NavParams, public modalController: ModalController) {}
+  constructor(private navParams: NavParams, public modalController: ModalController, private router: Router) {}
 
   ngOnInit() {
     let data = this.navParams.get('options')
@@ -32,16 +31,26 @@ export class ItemPage implements OnInit {
     };
   }
 
+  changes() {
+    return this.options_list.length>0;
+  }
+
   dismiss() {
     this.modalController.dismiss();
   }
 
-  addToOrder() {
+  order() {
     let item = {
       "title": this.title,
       "price": this.price,
       "change": this.change,
     };
-    this.modalController.dismiss(item);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        item: JSON.stringify(item)
+      }
+    };
+    this.modalController.dismiss(navigationExtras);
   }
 }
+

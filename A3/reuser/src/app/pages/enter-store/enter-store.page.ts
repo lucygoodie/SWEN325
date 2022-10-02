@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NfcService } from 'src/app/services/nfc.service';
 import { Router } from '@angular/router';
 
@@ -7,16 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './enter-store.page.html',
   styleUrls: ['./enter-store.page.scss'],
 })
-export class EnterStorePage implements OnInit {
+export class EnterStorePage {
 
   constructor(private nfcService: NfcService, private router: Router) { }
 
-  ngOnInit() {
-  }
-
   scan() {
     this.nfcService.readNFC().then( res => {
-      this.router.navigate(['/store/'+res]);
+      setTimeout(()=>{this.router.navigate(['/store/'+res])}, 3000);
     });
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { NfcService } from 'src/app/services/nfc.service';
 import { OrderPage } from '../order/order.page';
@@ -8,25 +9,14 @@ import { OrderPage } from '../order/order.page';
   templateUrl: './read-order.page.html',
   styleUrls: ['./read-order.page.scss'],
 })
-export class ReadOrderPage implements OnInit {
+export class ReadOrderPage {
 
-  constructor(private nfcService: NfcService, private modalController: ModalController) { }
-
-  ngOnInit() {
-  }
+  constructor(private nfcService: NfcService, private modalController: ModalController, private router: Router) { }
 
   scan() {
-
-    let order;
     this.nfcService.readNFC().then( res => {
-
-      console.log('In the scan() function in Read-Order');
-
-      console.log(res);
-      this.openOrderModal(order);
+      setTimeout(()=>{this.openOrderModal(JSON.parse(res))}, 3000);
     });
-
-    
   }
 
   async openOrderModal(order) {
@@ -34,6 +24,7 @@ export class ReadOrderPage implements OnInit {
         component: OrderPage,
         componentProps: order,
     });
+
     return modal.present();
   }
 }

@@ -14,7 +14,6 @@ export class StorePage implements OnInit {
 
   store_id;
   menu = [];
-  to_order;
 
   constructor(
     private route: ActivatedRoute, 
@@ -33,9 +32,7 @@ export class StorePage implements OnInit {
       message: 'Loading...',
       spinner: 'bubbles',
     });
-
     await loading.present();
-
     this.dbService.getRestaurantMenu(this.store_id).subscribe(res => {
       for (var key in res) {
           var value = res[key];
@@ -45,30 +42,25 @@ export class StorePage implements OnInit {
     }); 
   }
 
+  home() {
+    this.router.navigate(['/home']);
+  }
+
   async openItemModal(item) {
     const modal = await this.modalController.create({
         component: ItemPage,
         componentProps: item,
     });
-    modal.onDidDismiss().then(
-      (data) => {
-        this.to_order = data['data'];
-      });
+
+    modal.onDidDismiss()
+      .then((data) => {
+        if (data) {
+          const navigationExtras = data['data'];
+          this.router.navigate(['/write-order'], navigationExtras); 
+        }
+    });
+
     return await modal.present();
   }
 
-  showOrderOption() {
-    return this.to_order !== undefined;
-  }
-
-  order() {
-    console.log(JSON.stringify(this.to_order));
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(this.to_order)
-      }
-    };
-
-    this.router.navigate(['/write-order'], navigationExtras); 
-  }
 }

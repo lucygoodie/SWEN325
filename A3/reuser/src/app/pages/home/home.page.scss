@@ -5,19 +5,13 @@
 
 }
 
-.customer {
-    margin: 0%;
-    margin-left: 12%;
-    margin-right: 3%;
-    background-color: rgb(229, 210, 176);
-    box-shadow: none !important;
-}
-.server {
-    margin: 0%;
-    margin-right: 12%;
-    margin-left: 3%;
-    background-color: rgb(229, 210, 176);
-    box-shadow: none !important;
+.button {
+    margin: auto;
+    width: 80%;
+    background-color: #c3dab2;
+    position: fixed;
+    bottom: 10%;
+    left: 10%;
 }
 
 .title {
@@ -47,4 +41,17 @@
     bottom: 0.8rem;
     right: 1rem;
     position: absolute;
+}
+
+ion-segment {
+    --background: #9bad92;
+    height: 100%;
+}
+
+.selection {
+    width: 85%;
+    height: 8%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 8%;
 }

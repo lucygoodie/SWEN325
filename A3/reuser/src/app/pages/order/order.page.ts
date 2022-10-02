@@ -8,18 +8,24 @@ import { NavParams, ModalController } from '@ionic/angular';
 })
 export class OrderPage implements OnInit {
 
-  order;
+  total_price;
+  change;
   title;
+  name;
 
   constructor(private navParams: NavParams, public modalController: ModalController) {}
 
   ngOnInit() {
-    console.log(this.title);
-    // this.data=data;
-    // for (var key in data) {
-    //   var value = data[key];
-    //   this.order.push(value);
-    // }
+    this.total_price = this.navParams.get('price');
+    let change = this.navParams.get('change');
+    if (change && change.cost) {
+      this.total_price += change.cost;
+      this.change = change.title;
+    }
+  }
+
+  changes() {
+    return this.change !== undefined;
   }
 
   dismiss() {
